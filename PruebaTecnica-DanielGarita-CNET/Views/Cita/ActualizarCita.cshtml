@@ -1,0 +1,85 @@
+﻿@model PruebaTecnica_DanielGarita_CNET.Entities.CitaObj
+
+@{
+    ViewBag.Title = "";
+}
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+
+    <div class="card-header py-3 bg-primary">
+        <h6 class="m-0 font-weight-bold text-white">Registro de citas</h6>
+    </div>
+    <div class="card-body">
+
+        @using (Html.BeginForm("ActualizarCita", "Cita", new { idCita = Model.idCita }, FormMethod.Post))
+        {
+            <div class="row">
+
+                <!--para las filas-->
+                <!--se crea la columna-->
+                <div class="col-4">
+                    <div class="form-group">
+                        <label>Paciente:</label>
+                        @Html.DropDownListFor(m => m.idPaciente, ViewBag.listaPacientes as List<SelectListItem>, new { @class = "form-control" })
+
+                    </div>
+
+                    <br />
+                </div>
+
+                <div class="col-4">
+                    <div class="form-group">
+                        <label>Doctor:</label>
+                        @Html.DropDownListFor(m => m.idDoctor, ViewBag.listaDoctores as List<SelectListItem>, new { @class = "form-control" })
+
+                    </div>
+                    <br />
+                </div>
+
+                <div class="col-4">
+                    <div class="form-group">
+                        <label>Doctor:</label>
+                        @Html.DropDownListFor(m => m.idTratamiento, ViewBag.listaTratamientos as List<SelectListItem>, new { @class = "form-control" })
+                    </div>
+                    <br />
+                </div>
+
+                <div class="col-4">
+                    <div class="form-group">
+                        <label>Descripcion</label>
+                        @Html.TextBoxFor(m => m.descripcion, new { @class = "form-control", @type = "text" })
+                        @Html.ValidationMessageFor(m => m.descripcion, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="form-group">
+                        <label>Monto</label>
+                        @Html.TextBoxFor(m => m.monto, new { @class = "form-control", onkeypress = "return isNumber(event)" })
+                        @Html.ValidationMessageFor(m => m.monto, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="form-group">
+                        <label>Fecha:</label>
+                        @Html.TextBoxFor(m => m.fecha, new { @class = "form-control", @type = "date" })
+                        @Html.ValidationMessageFor(m => m.fecha, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Actualizar Cita</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+
